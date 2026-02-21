@@ -8,6 +8,7 @@
 "max_map_zoom": 12,
 "min_map_zoom": 2
 },
+
 "legal_and_safety": {
 "allowed_licenses": ["cc0", "cc-by", "cc-by-sa"],
 "forbidden_license_terms": ["nc", "nd"],
@@ -16,6 +17,7 @@
 "require_native_status": true,
 "quality_grade": "research"
 },
+
 "ui_texts": {
 "title": "Fauna",
 "loading": {
@@ -38,6 +40,7 @@
 "success_subtitle": "Presença estabelecida encontrada ({n} registros próximos)."
 }
 },
+
 "urls": {
 "inat_api_base": "https://api.inaturalist.org/v1/observations",
 "inat_site_base": "https://www.inaturalist.org",
@@ -48,10 +51,15 @@
 },
 "map_tiles": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
 },
-"attributions": {
-"inat_community": "INDEPENDENT PROJECT UTILIZING iNaturalist community DATA",
-"inat_disclaimer": "THIS APP IS NOT ENDORSED OR CERTIFIED BY iNATURALIST.",
-"photo_default": "Photo: iNaturalist community",
+
+"LEGAL_ATTRIBUTIONS_LOCKED": {
+"immutable": true,
+"warning": "DO NOT MODIFY OR REWRITE THESE ATTRIBUTIONS. REQUIRED FOR LICENSE COMPLIANCE.",
+
+"inat": {
+"text": "INDEPENDENT PROJECT UTILIZING iNaturalist community DATA",
+"disclaimer": "THIS APP IS NOT ENDORSED OR CERTIFIED BY iNATURALIST."
+},
 
 "map": {
 "text": "Map data © OpenStreetMap contributors • Map style © CARTO",
@@ -64,6 +72,8 @@
 "textures": {
 "text": "Textures © Transparent Textures",
 "link": "https://www.transparenttextures.com/"
-}
+},
+
+"photo_default": "Photo: iNaturalist community"
 }
 }
