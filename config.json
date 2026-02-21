@@ -1,55 +1,56 @@
 {
-  "game_settings": {
-    "queue_target": 10,
-    "density_threshold": 3,
-    "search_radius_km": 500,
-    "initial_map_view": [15, 0],
-    "initial_zoom": 2,
-    "max_map_zoom": 12,
-    "min_map_zoom": 2
-  },
-  "legal_and_safety": {
-    "allowed_licenses": ["cc0", "cc-by", "cc-by-sa"],
-    "forbidden_license_terms": ["nc", "nd"],
-    "require_photos": true,
-    "require_native_status": true,
-    "quality_grade": "research"
-  },
-  "ui_texts": {
-    "title": "Fauna",
-    "loading": {
-      "sync": "Sincronizando iNaturalist...",
-      "analyzing": "Analisando Bio-Região..."
-    },
-    "hud": {
-      "observation_label": "Observação",
-      "best_record_label": "Recorde Histórico",
-      "current_obs_label": "Observações Atuais"
-    },
-    "game_over": {
-      "title": "Expedição Encerrada",
-      "button_restart": "Nova Expedição",
-      "reason_rare": "Ocorrência rara encontrada, mas não é um habitat estabelecido.",
-      "reason_none": "Nenhum registro encontrado nesta região."
-    },
-    "banners": {
-      "success_title": "HABITAT CONFIRMADO!",
-      "success_subtitle": "Presença estabelecida encontrada ({n} registros próximos)."
-    }
-  },
-  "urls": {
-    "inat_api_base": "https://api.inaturalist.org/v1/observations",
-    "inat_site_base": "https://www.inaturalist.org",
-    "placeholder_img": "https://via.placeholder.com/300?text=Native+Animal",
-    "textures": {
-      "parchment": "https://www.transparenttextures.com/patterns/parchment.png",
-      "natural_paper": "https://www.transparenttextures.com/patterns/natural-paper.png"
-    },
-    "map_tiles": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-  },
-  "attributions": {
-    "inat_community": "INDEPENDENT PROJECT UTILIZING iNaturalist community DATA",
-    "inat_disclaimer": "THIS APP IS NOT ENDORSED OR CERTIFIED BY iNATURALIST.",
-    "photo_default": "Photo: iNaturalist community"
-  }
+"game_settings": {
+"queue_target": 10,
+"density_threshold": 3,
+"search_radius_km": 500,
+"initial_map_view": [15, 0],
+"initial_zoom": 2,
+"max_map_zoom": 12,
+"min_map_zoom": 2
+},
+"legal_and_safety": {
+"allowed_licenses": ["cc0", "cc-by", "cc-by-sa"],
+"forbidden_license_terms": ["nc", "nd"],
+"block_all_rights_reserved": true,
+"require_photos": true,
+"require_native_status": true,
+"quality_grade": "research"
+},
+"ui_texts": {
+"title": "Fauna",
+"loading": {
+"sync": "Sincronizando iNaturalist...",
+"analyzing": "Analisando Bio-Região..."
+},
+"hud": {
+"observation_label": "Observação",
+"best_record_label": "Recorde Histórico",
+"current_obs_label": "Observações Atuais"
+},
+"game_over": {
+"title": "Expedição Encerrada",
+"button_restart": "Nova Expedição",
+"reason_rare": "Ocorrência rara encontrada, mas não é um habitat estabelecido.",
+"reason_none": "Nenhum registro encontrado nesta região."
+},
+"banners": {
+"success_title": "HABITAT CONFIRMADO!",
+"success_subtitle": "Presença estabelecida encontrada ({n} registros próximos)."
+}
+},
+"urls": {
+"inat_api_base": "https://api.inaturalist.org/v1/observations",
+"inat_site_base": "https://www.inaturalist.org",
+"placeholder_img": "https://via.placeholder.com/300?text=Native+Animal",
+"textures": {
+"parchment": "https://www.transparenttextures.com/patterns/parchment.png",
+"natural_paper": "https://www.transparenttextures.com/patterns/natural-paper.png"
+},
+"map_tiles": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+},
+"attributions": {
+"inat_community": "INDEPENDENT PROJECT UTILIZING iNaturalist community DATA",
+"inat_disclaimer": "THIS APP IS NOT ENDORSED OR CERTIFIED BY iNATURALIST.",
+"photo_default": "Photo: iNaturalist community"
+}
 }
