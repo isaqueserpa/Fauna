@@ -51,6 +51,19 @@
 "attributions": {
 "inat_community": "INDEPENDENT PROJECT UTILIZING iNaturalist community DATA",
 "inat_disclaimer": "THIS APP IS NOT ENDORSED OR CERTIFIED BY iNATURALIST.",
-"photo_default": "Photo: iNaturalist community"
+"photo_default": "Photo: iNaturalist community",
+
+"map": {
+"text": "Map data © OpenStreetMap contributors • Map style © CARTO",
+"links": {
+"openstreetmap": "https://www.openstreetmap.org/copyright",
+"carto": "https://carto.com/attributions"
+}
+},
+
+"textures": {
+"text": "Textures © Transparent Textures",
+"link": "https://www.transparenttextures.com/"
+}
 }
 }
