@@ -26,7 +26,7 @@ body, html {
 }
 
 #side-panel {
-    width: 300px; height: 100vh;
+    width: 300px; height: 100%;
     background: rgba(25, 45, 36, 0.95);
     backdrop-filter: blur(10px);
     display: flex; flex-direction: column; align-items: center;
@@ -82,7 +82,7 @@ body, html {
 }
 
 #map-container { 
-    flex: 1; position: relative; height: 100vh; padding: 25px; 
+    flex: 1; position: relative; height: 100%; min-height: 0; padding: 25px; 
     display: flex; flex-direction: column; z-index: 1;
 }
 
@@ -252,6 +252,16 @@ body, html {
         flex-direction: column; /* Empilha o painel e o mapa verticalmente */
         overflow: hidden;
     }
+    /* ✅ garante ordem correta no celular */
+#map-container { order: 1; }
+#side-panel { order: 2; }
+
+/* ✅ evita bug de altura no mobile */
+#map-container,
+#side-panel {
+    height: auto;
+    min-height: 0;
+}
 
     /* 1. O Título acima do mapa */
     .logo-main {
@@ -271,11 +281,11 @@ body, html {
 
     /* 2. O Mapa ocupando a maior parte da tela */
     #map-container {
-        flex: 1; 
-        padding: 10px;
-        margin-top: 60px; /* Dá espaço para o título no topo */
-        height: 60vh;
-    }
+    flex: 1;
+    padding: 10px;
+    margin-top: 60px;
+    min-height: 55vh;
+}
 
     #map-wrapper {
         border-width: 6px; /* Bordas mais finas no mobile */
