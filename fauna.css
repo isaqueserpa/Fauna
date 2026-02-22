@@ -4,8 +4,11 @@
     --bg-dark: #0f1a14;
     --panel-brown: #192d24;
     --accent-gold: #c5a059;
+    --accent-gold-hover: #d4b171;
     --paper-light: #dfd3bd;
     --success-green: #22c55e;
+    --success-green-alpha: rgba(34, 197, 94, 0.8);
+    --amber-record: rgba(245, 158, 11, 0.8);
     --text-muted-green: #5a8a68;
 }
 
@@ -21,88 +24,29 @@ body, html {
     display: flex; color: #f8fafc;
 }
 
-/* --- ESTILOS PARA DADOS DO JSON (ATRIBUIÇÕES E CRÉDITOS) --- */
-
-.ui-container-credits {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 16px;
-}
-
-#ui-attr-community {
-    font-size: 0.65rem;
-    color: var(--text-muted-green);
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1.6;
-}
-
-#ui-attr-community a {
-    color: var(--accent-gold);
-    font-weight: bold;
-    text-decoration: none;
-}
-
-#ui-attr-community a:hover {
-    text-decoration: underline;
-}
-
-#ui-attr-disclaimer {
-    font-size: 0.55rem;
-    color: var(--text-muted-green);
-    opacity: 0.5;
-    text-align: center;
-    text-transform: uppercase;
-    font-style: italic;
-    letter-spacing: -0.02em;
-}
-
-#side-credits {
-    font-size: 0.65rem;
-    color: var(--text-muted-green);
-    text-align: center;
-    line-height: 1.5;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(90, 138, 104, 0.2);
-    width: 100%;
-}
-
-#side-credits a {
-    text-decoration: underline;
-    font-weight: 500;
-}
-
-/* --- ESTILOS DO HUD (INTERFACE DE JOGO) --- */
-
-.hud-label-small {
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: rgba(34, 197, 94, 0.8); /* green-500/80 */
-}
-
-#event-count {
-    font-size: 1.25rem;
-    font-weight: 900;
-    line-height: 1;
-}
-
-/* --- OVERLAYS E MODAIS --- */
-
-.body-overlay {
-    position: fixed; inset: 0;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
-    z-index: 0; pointer-events: none;
-}
+/* --- LOADING INDICATOR --- */
 
 #loading-indicator {
-    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    background: rgba(15, 26, 20, 0.9); z-index: 10000; flex-direction: column; gap: 1rem;
+    position: absolute; inset: 0; 
+    display: none; /* Controlado pelo JS */
+    align-items: center; justify-content: center;
+    background: rgba(15, 26, 20, 0.9); z-index: 10000; 
+    flex-direction: column; gap: 1rem;
+}
+
+.animate-spin {
+    width: 3rem; height: 3rem;
+    border-radius: 9999px;
+    border-top: 2px solid var(--success-green);
+    border-bottom: 2px solid var(--success-green);
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 #loading-text {
@@ -113,10 +57,92 @@ body, html {
     font-size: 0.75rem;
 }
 
+/* --- OVERLAYS E GAME OVER --- */
+
+.body-overlay {
+    position: fixed; inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+    z-index: 0; pointer-events: none;
+}
+
 #game-over-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.85); 
-    z-index: 11000; display: none; align-items: center; justify-content: center;
+    position: fixed; inset: 0; 
+    background: rgba(0,0,0,0.85); 
+    z-index: 11000; display: none; 
+    align-items: center; justify-content: center;
     backdrop-filter: blur(8px);
+}
+
+.game-over-modal {
+    background: var(--panel-brown); border: 2px solid var(--accent-gold);
+    padding: 40px; text-align: center; border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8); max-width: 90%; width: 400px;
+}
+
+#ui-go-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.25rem;
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+}
+
+#game-over-reason {
+    font-size: 0.875rem;
+    color: #9ca3af; /* gray-400 */
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.game-over-stats-box {
+    background: rgba(0,0,0,0.3);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.stat-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+#ui-current-label { color: var(--success-green-alpha); }
+#ui-best-label { color: var(--amber-record); }
+
+#final-observations {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+#best-observations {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #f59e0b;
+    line-height: 1;
+}
+
+#ui-restart-btn {
+    width: 100%;
+    background-color: var(--accent-gold);
+    color: black;
+    font-weight: bold;
+    padding: 0.75rem 0;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#ui-restart-btn:hover {
+    background-color: var(--accent-gold-hover);
 }
 
 /* --- SIDE PANEL --- */
@@ -162,6 +188,59 @@ body, html {
     position: relative; border: 1px solid var(--accent-gold);
 }
 
+/* --- SIDE FOOTER / CREDITS --- */
+
+.side-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+#ui-attr-community {
+    font-size: 0.65rem;
+    color: var(--text-muted-green);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.625;
+}
+
+#ui-attr-community a {
+    color: var(--accent-gold);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#ui-attr-community a:hover { text-decoration: underline; }
+
+#ui-attr-disclaimer {
+    font-size: 0.55rem;
+    color: var(--text-muted-green);
+    opacity: 0.5;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: -0.025em;
+}
+
+#side-credits {
+    font-size: 0.65rem;
+    color: var(--text-muted-green);
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(90, 138, 104, 0.2);
+    width: 100%;
+}
+
+#side-credits a { text-decoration: underline; font-weight: 500; }
+.mt-1 { margin-top: 0.25rem; }
+.opacity-90 { opacity: 0.9; }
+
 /* --- MAPA E HUD --- */
 
 #map-container { 
@@ -192,6 +271,21 @@ body, html {
     padding: 10px 25px; border-radius: 4px;
     display: flex; gap: 25px; border: 2px solid var(--accent-gold); z-index: 1005;
     box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.hud-column { display: flex; flex-direction: column; }
+
+#ui-hud-obs-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--success-green-alpha);
+}
+
+#event-count {
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1;
 }
 
 /* --- LEAFLET CUSTOM --- */
@@ -254,25 +348,7 @@ body, html {
 .token-image-circle img { width: 100% !important; height: 100% !important; object-fit: cover; display: block; }
 .token-pin { width: 3px; height: 15px; background: #5a8a68; }
 
-/* --- GAME OVER MODAL --- */
-
-.game-over-modal {
-    background: var(--panel-brown); border: 2px solid var(--accent-gold);
-    padding: 40px; text-align: center; border-radius: 8px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.8); max-width: 90%; width: 400px;
-}
-
-.game-over-stats {
-    background: rgba(0,0,0,0.3); padding: 16px; border-radius: 4px; 
-    margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.1);
-}
-
-.stat-label-current { font-size: 0.6rem; text-transform: uppercase; font-weight: bold; color: rgba(34, 197, 94, 0.8); margin-bottom: 4px; }
-.stat-value-current { font-size: 2.25rem; font-weight: 900; color: white; line-height: 1; margin-bottom: 16px; }
-.stat-label-best { font-size: 0.6rem; text-transform: uppercase; font-weight: bold; color: rgba(245, 158, 11, 0.8); margin-bottom: 4px; }
-.stat-value-best { font-size: 1.5rem; font-weight: 900; color: #f59e0b; line-height: 1; }
-
-/* --- ANIMATIONS --- */
+/* --- ANIMATIONS & BANNERS --- */
 
 .card-enter { animation: cardAppear 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 @keyframes cardAppear {
