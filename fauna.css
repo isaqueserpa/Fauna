@@ -246,3 +246,101 @@ body, html {
     0% { transform: translateX(-50%) scale(0.8); opacity: 0; }
     100% { transform: translateX(-50%) scale(1); opacity: 1; }
 }
+/* --- LAYOUT MOBILE (Media Query) --- */
+@media (max-width: 768px) {
+    body, html {
+        flex-direction: column; /* Empilha o painel e o mapa verticalmente */
+        overflow: hidden;
+    }
+
+    /* 1. O Título acima do mapa */
+    .logo-main {
+        font-size: 2.5rem;
+        margin-bottom: 5px;
+    }
+    
+    .logo-container {
+        margin-bottom: 10px;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1006;
+        width: 100%;
+    }
+
+    /* 2. O Mapa ocupando a maior parte da tela */
+    #map-container {
+        flex: 1; 
+        padding: 10px;
+        margin-top: 60px; /* Dá espaço para o título no topo */
+        height: 60vh;
+    }
+
+    #map-wrapper {
+        border-width: 6px; /* Bordas mais finas no mobile */
+    }
+
+    /* 3. Painel na parte de baixo */
+    #side-panel {
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+        flex-direction: row; /* Coloca os elementos lado a lado */
+        flex-wrap: wrap;
+        padding: 15px 10px;
+        border-right: none;
+        border-top: 2px solid var(--accent-gold);
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    /* 4. Botões de modo empilhados à esquerda */
+    .mode-selector {
+        flex-direction: column;
+        width: 80px;
+        margin-bottom: 0;
+        order: 1;
+    }
+    
+    .mode-btn {
+        font-size: 0.55rem;
+        padding: 10px 2px;
+    }
+
+    /* 5. Cartas (Charger Station) no centro */
+    #charger-station {
+        width: 140px;
+        height: 140px;
+        order: 2;
+    }
+
+    /* Ajuste da carta dentro do slot para não sumir */
+    .history-card {
+        width: 120px;
+        min-height: 160px;
+        padding: 6px;
+    }
+    
+    .card-image-container { height: 70px; }
+
+    /* 6. Créditos à direita */
+    #side-panel .mt-auto {
+        margin-top: 0 !important;
+        width: 80px;
+        order: 3;
+        padding: 0;
+    }
+
+    #ui-attr-community, #ui-attr-disclaimer, #side-credits {
+        text-align: right;
+        font-size: 0.5rem;
+    }
+
+    /* Ajustes extras: HUD de pontos */
+    .hud-top {
+        top: 70px; /* Desce um pouco para não bater no título */
+        right: 20px;
+        padding: 5px 15px;
+    }
+}
