@@ -246,3 +246,34 @@ body, html {
     0% { transform: translateX(-50%) scale(0.8); opacity: 0; }
     100% { transform: translateX(-50%) scale(1); opacity: 1; }
 }
+/* === Attribution / Credits === */
+
+.attr-text {
+    font-size: 0.65rem;
+    color: #5a8a68;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    line-height: 1.6;
+}
+
+.attr-disclaimer {
+    font-size: 0.55rem;
+    color: #5a8a68;
+    opacity: 0.5;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-style: italic;
+}
+
+.side-credits {
+    font-size: 0.65rem;
+    color: #5a8a68;
+    text-align: center;
+    line-height: 1.4;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(90,138,104,0.2);
+    width: 100%;
+}
