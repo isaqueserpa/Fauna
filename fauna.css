@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Cinzel:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Cinzel:wght@700;900&display=swap'); 
 
 :root {
     --bg-dark: #0f1a14;
@@ -276,17 +276,6 @@ body, html {
         margin-top: 60px; /* Dá espaço para o título no topo */
         height: 60vh;
     }
-    @media (max-width: 768px) {
-
-    #map-container {
-        order: 1;
-    }
-
-    #side-panel {
-        order: 2;
-    }
-
-}
 
     #map-wrapper {
         border-width: 6px; /* Bordas mais finas no mobile */
