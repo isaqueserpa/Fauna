@@ -246,3 +246,142 @@ body, html {
     0% { transform: translateX(-50%) scale(0.8); opacity: 0; }
     100% { transform: translateX(-50%) scale(1); opacity: 1; }
 }
+
+/* --- ADIÇÕES NOVAS ABAIXO --- */
+
+/* --- Atribuições e Créditos (Painel Lateral) --- */
+#side-panel .mt-auto {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+#ui-attr-community {
+    font-size: 0.65rem;
+    color: #5a8a68;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+}
+
+#ui-attr-community a {
+    color: #c5a059;
+    font-weight: bold;
+}
+
+#ui-attr-community a:hover {
+    text-decoration: underline;
+}
+
+#ui-attr-disclaimer {
+    font-size: 0.55rem;
+    color: #5a8a68;
+    opacity: 0.5;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    font-style: italic;
+}
+
+#side-credits {
+    font-size: 0.75rem;
+    color: #5a8a68;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(90, 138, 104, 0.2);
+    width: 100%;
+}
+
+#side-credits a {
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* --- HUD e Overlays --- */
+.hud-top .flex {
+    display: flex;
+    flex-direction: column;
+}
+
+#ui-hud-obs-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgba(34, 197, 94, 0.8);
+}
+
+#event-count {
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+/* --- Game Over Modal --- */
+.game-over-stats-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#ui-current-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgba(34, 197, 94, 0.8);
+    margin-bottom: 0.25rem;
+}
+
+#final-observations {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+#ui-best-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgba(245, 158, 11, 0.8);
+    margin-bottom: 0.25rem;
+}
+
+#best-observations {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #f59e0b;
+    line-height: 1;
+}
+
+/* --- Utilitários de Loading --- */
+#loading-indicator .spinner {
+    animation: spin 1s linear infinite;
+    border-radius: 9999px;
+    height: 3rem;
+    width: 3rem;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-color: #22c55e;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#loading-text {
+    color: #22c55e;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+}
