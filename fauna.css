@@ -246,65 +246,57 @@ body, html {
     0% { transform: translateX(-50%) scale(0.8); opacity: 0; }
     100% { transform: translateX(-50%) scale(1); opacity: 1; }
 }
-/* Container principal dos créditos no rodapé do aside */
-.credits-container {
+/* Container principal dos créditos */
+#side-panel .credits-container {
     margin-top: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
     padding: 16px;
-}
-
-/* Texto da comunidade iNaturalist */
-.attr-community {
-    font-size: 0.65rem;
-    color: #5a8a68;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.1em; /* tracking-widest */
-    line-height: 1.625; /* leading-relaxed */
-}
-
-.attr-community a {
-    color: #c5a059;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.attr-community a:hover {
-    text-decoration: underline;
-}
-
-/* Aviso legal/Disclaimer */
-.attr-disclaimer {
-    font-size: 0.55rem;
-    color: #5a8a68;
-    opacity: 0.5;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: -0.05em; /* tracking-tighter */
-    font-style: italic;
-}
-
-/* Bloco inferior (Map Data e Texturas) */
-.side-credits {
-    font-size: 0.65rem;
-    color: #5a8a68;
-    text-align: center;
-    line-height: 1.5; /* leading-normal */
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(90, 138, 104, 0.2); /* #5a8a68 com 20% opacidade */
     width: 100%;
 }
 
-.side-credits a {
-    text-decoration: underline;
-    font-weight: 500;
+/* Texto da comunidade iNaturalist e Map Data */
+#side-panel .attr-community, 
+#side-panel .side-credits {
+    font-size: 0.65rem !important;
+    color: #5a8a68 !important; /* VERDE */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
 }
 
-.side-credits div + div {
-    margin-top: 4px; /* mt-1 */
-    opacity: 0.9;
+/* Forçar a cor dourada nos links específicos */
+#side-panel .attr-community a,
+#side-panel .attr-community a span {
+    color: #c5a059 !important; /* DOURADO */
+    font-weight: 800 !important;
+    text-decoration: none;
+}
+
+/* Disclaimer (o texto menorzinho) */
+#side-panel .attr-disclaimer {
+    font-size: 0.55rem !important;
+    color: #5a8a68 !important;
+    opacity: 0.6;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+/* Links de rodapé (OSM e CARTO) */
+#side-panel .side-credits a {
+    color: #5a8a68 !important;
+    text-decoration: underline !important;
+    font-weight: 600;
+}
+
+#side-panel .side-credits {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(90, 138, 104, 0.3);
+    width: 100%;
+    text-transform: none; /* Map data costuma ficar melhor em minúsculo */
 }
