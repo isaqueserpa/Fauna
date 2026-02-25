@@ -335,30 +335,30 @@ body, html {
     
     .card-image-container { height: 70px; }
 
-    /* 6. Créditos Organizados */
+   /* 6. Créditos organizados */
     #side-panel .mt-auto {
         margin-top: 0 !important;
-        width: 100%; /* Faz a área de créditos ocupar a largura toda */
-        display: flex; /* Coloca os itens em linha */
-        justify-content: space-between; /* Empurra um pra cada ponta */
-        order: 3; /* Mantém no final */
-        padding: 5px 0;
+        width: 100%; /* Agora ocupa a largura toda pra podermos separar os lados */
+        order: 3;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
     }
 
-    /* Créditos comuns na esquerda */
-    #side-credits, #ui-attr-disclaimer {
+    /* O que não é iNaturalist vai para a esquerda */
+    #side-credits {
         text-align: left;
-        font-size: 0.55rem;
-        flex: 1;
+        font-size: 0.5rem;
+        width: 100%;
     }
 
-    /* iNaturalist na direita */
-    #ui-attr-community {
+    /* O que é do iNaturalist vai para a direita */
+    #ui-attr-community, #ui-attr-disclaimer {
         text-align: right;
-        font-size: 0.55rem;
-        flex: 1;
+        font-size: 0.5rem;
+        width: 100%;
     }
-
+    
     /* Ajustes extras: HUD de pontos */
     .hud-top {
         top: 70px; /* Desce um pouco para não bater no título */
