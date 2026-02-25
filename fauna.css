@@ -336,18 +336,31 @@ padding: 6px;
 
 .card-image-container { height: 70px; }
 
-/* 6. Créditos à direita */
-#side-panel .mt-auto {
-margin-top: 0 !important;
-width: 80px;
-order: 3;
-padding: 0;
-}
+/* 6. Créditos divididos: iNaturalist na direita, outros na esquerda */
+    #side-panel .mt-auto {
+        margin-top: 0 !important;
+        width: 100%; /* Faz o bloco ocupar a largura toda para podermos organizar */
+        order: 3;
+        padding: 0;
+        display: flex;
+        flex-direction: row; /* Coloca um do lado do outro */
+        justify-content: space-between; /* Empurra um pra cada ponta */
+        align-items: flex-end;
+    }
 
-#ui-attr-community, #ui-attr-disclaimer, #side-credits {
-text-align: right;
-font-size: 0.5rem;
-}
+    /* O que vai ficar na ESQUERDA (abaixo dos botões) */
+    #side-credits {
+        text-align: left;
+        font-size: 0.5rem;
+        width: 45%;
+    }
+
+    /* O que vai ficar na DIREITA (iNaturalist) */
+    #ui-attr-community, #ui-attr-disclaimer {
+        text-align: right;
+        font-size: 0.5rem;
+        width: 45%;
+    }
 
 /* Ajustes extras: HUD de pontos */
 .hud-top {
