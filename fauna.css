@@ -46,6 +46,11 @@ color: var(--accent-gold);
 text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
+/* No desktop, o logo mobile fica escondido */
+.logo-mobile { display: none; }
+/* No desktop, o logo desktop aparece normalmente */
+.logo-desktop { display: block; }
+
 .mode-selector {
 display: flex;
 background: #121a16;
@@ -247,125 +252,146 @@ text-align: center;
 0% { transform: translateX(-50%) scale(0.8); opacity: 0; }
 100% { transform: translateX(-50%) scale(1); opacity: 1; }
 }
+
 /* --- LAYOUT MOBILE (Media Query) --- */
 @media (max-width: 768px) {
-body, html {
-flex-direction: column; /* Empilha o painel e o mapa verticalmente */
-overflow: hidden;
-}
-/* ✅ garante ordem correta no celular */
-#map-container { order: 1; }
-#side-panel { order: 2; }
+    body, html {
+        flex-direction: column;
+        overflow: hidden;
+    }
 
-/* ✅ evita bug de altura no mobile */
-#map-container,
-#side-panel {
-height: auto;
-min-height: 0;
-}
+    /* Ordem: mapa em cima, painel embaixo */
+    #map-container { order: 1; }
+    #side-panel    { order: 2; }
 
-/* 1. O Título acima do mapa */
-.logo-main {
-font-size: 2.5rem;
-margin-bottom: 5px;
-}
+    /* Alturas flexíveis */
+    #map-container,
+    #side-panel {
+        height: auto;
+        min-height: 0;
+    }
 
-.logo-container {
-margin-bottom: 10px;
-position: absolute;
-top: 10px;
-left: 50%;
-transform: translateX(-50%);
-z-index: 1006;
-width: 100%;
-}
+    /* --- LOGO MOBILE ---
+       Esconde o logo do side-panel e exibe o logo dentro do map-container */
+    .logo-desktop { display: none !important; }
+    .logo-mobile {
+        display: block;
+        text-align: center;
+        flex-shrink: 0;
+        padding: 8px 0 4px;
+    }
+    .logo-mobile .logo-main {
+        font-size: 2.5rem;
+    }
 
-/* 2. O Mapa ocupando a maior parte da tela */
-#map-container {
-flex: 1;
-padding: 10px;
-margin-top: 60px;
-min-height: 55vh;
-    overflow: hidden;
-}
-
-#map-wrapper {
-border-width: 6px; /* Bordas mais finas no mobile */
-}
-
-/* 3. Painel na parte de baixo */
-#side-panel {
-width: 100%;
-height: auto;
-min-height: 250px;
-flex-direction: row; /* Coloca os elementos lado a lado */
-flex-wrap: wrap;
-padding: 15px 10px;
-border-right: none;
-border-top: 2px solid var(--accent-gold);
-justify-content: space-around;
-align-items: center;
-}
-
-/* 4. Botões de modo empilhados à esquerda */
-.mode-selector {
-flex-direction: column;
-width: 80px;
-margin-bottom: 0;
-order: 1;
-}
-
-.mode-btn {
-font-size: 0.55rem;
-padding: 10px 2px;
-}
-
-/* 5. Cartas (Charger Station) no centro */
-#charger-station {
-width: 140px;
-height: 140px;
-order: 2;
-}
-
-/* Ajuste da carta dentro do slot para não sumir */
-.history-card {
-width: 120px;
-min-height: 160px;
-padding: 6px;
-}
-
-.card-image-container { height: 70px; }
-
-/* 6. Créditos divididos: iNaturalist na direita, outros na esquerda */
-    #side-panel .mt-auto {
-        margin-top: 0 !important;
-        width: 100%; /* Faz o bloco ocupar a largura toda para podermos organizar */
-        order: 3;
-        padding: 0;
+    /* Mapa: coluna flex com logo + mapa */
+    #map-container {
+        flex: 1;
+        padding: 6px 10px 10px;
         display: flex;
-        flex-direction: row; /* Coloca um do lado do outro */
-        justify-content: space-between; /* Empurra um pra cada ponta */
-        align-items: flex-end;
+        flex-direction: column;
+        min-height: 55vh;
+        overflow: hidden;
     }
 
-    /* O que vai ficar na ESQUERDA (abaixo dos botões) */
+    #map-wrapper {
+        flex: 1;
+        border-width: 6px;
+    }
+
+    /* --- PAINEL INFERIOR --- */
+    #side-panel {
+        width: 100%;
+        height: auto;
+        min-height: 190px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 12px 10px 8px;
+        border-right: none;
+        border-top: 2px solid var(--accent-gold);
+        justify-content: space-around;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* Botões de modo: coluna à esquerda */
+    .mode-selector {
+        flex-direction: column;
+        width: 75px;
+        margin-bottom: 0;
+        order: 1;
+        flex-shrink: 0;
+    }
+
+    .mode-btn {
+        font-size: 0.55rem;
+        padding: 10px 2px;
+    }
+
+    /* Carta (charger station): centro */
+    #charger-station {
+        width: 140px;
+        height: 140px;
+        order: 2;
+        flex-shrink: 0;
+    }
+
+    /* Carta dentro do slot */
+    .history-card {
+        width: 120px;
+        min-height: 160px;
+        padding: 6px;
+    }
+
+    .card-image-container { height: 70px; }
+
+    /* --- ATRIBUIÇÕES: duas colunas equilibradas --- */
+    .mt-auto {
+        order: 3;
+        width: 100%;
+        margin-top: 4px !important;
+        padding: 6px 4px 0;
+        border-top: 1px solid rgba(90, 138, 104, 0.2);
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 2px 10px;
+        align-items: start;
+    }
+
+    /* Coluna esquerda: iNaturalist community + disclaimer */
+    #ui-attr-community {
+        grid-column: 1;
+        grid-row: 1;
+        text-align: left !important;
+        font-size: 0.5rem !important;
+        line-height: 1.3;
+    }
+
+    #ui-attr-disclaimer {
+        grid-column: 1;
+        grid-row: 2;
+        text-align: left !important;
+        font-size: 0.45rem !important;
+        line-height: 1.3;
+    }
+
+    /* Coluna direita: mapa + texturas */
     #side-credits {
-        text-align: left;
-        font-size: 0.5rem;
-        width: 45%;
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        text-align: right !important;
+        font-size: 0.5rem !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        border-top: none !important;
+        line-height: 1.4;
     }
 
-    /* O que vai ficar na DIREITA (iNaturalist) */
-    #ui-attr-community, #ui-attr-disclaimer {
-        text-align: right;
-        font-size: 0.5rem;
-        width: 45%;
+    /* HUD de pontos */
+    .hud-top {
+        top: 8px;
+        right: 12px;
+        padding: 5px 12px;
     }
-
-/* Ajustes extras: HUD de pontos */
-.hud-top {
-top: 70px; /* Desce um pouco para não bater no título */
-right: 20px;
-padding: 5px 15px;
-}
 }
